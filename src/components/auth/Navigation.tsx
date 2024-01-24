@@ -17,6 +17,7 @@ const Navigation = () => {
         >
           {session ? "Sign out" : "Sign in"}
         </Link>
+        <div>{session && <span>Logged in as {session.user?.name}</span>}</div>
       </div>
     </header>
   );
