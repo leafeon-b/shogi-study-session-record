@@ -1,13 +1,13 @@
-import Navigation from "~/components/auth/Navigation";
-import "~/styles/globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import Navigation from "~/components/auth/Navigation";
+import "~/styles/globals.css";
 
 config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
