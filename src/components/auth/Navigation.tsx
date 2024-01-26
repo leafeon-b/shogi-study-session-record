@@ -53,13 +53,30 @@ const Navigation = () => {
         <Toolbar />
         <Divider />
         <List>
-          {["研究会一覧", "対局結果一覧", "ユーザ一覧"].map((text) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText className="flex justify-center" primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding>
+            <ListItemButton LinkComponent="a" href="/groups">
+              <ListItemText
+                className="flex justify-center"
+                primary="研究会一覧"
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton LinkComponent="a" href="/matches">
+              <ListItemText
+                className="flex justify-center"
+                primary="対局結果一覧"
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton LinkComponent="a" href="/users">
+              <ListItemText
+                className="flex justify-center"
+                primary="ユーザ一覧"
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box
