@@ -6,7 +6,6 @@ import {
   TableRow,
 } from "@mui/material";
 import { unstable_noStore as noStore } from "next/cache";
-import Image from "next/image";
 import { api } from "~/trpc/server";
 
 export default function Home() {
