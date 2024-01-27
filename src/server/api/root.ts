@@ -1,6 +1,6 @@
 import { postRouter } from "~/server/api/routers/post";
 import { createTRPCRouter } from "~/server/api/trpc";
-import { studyGroupRouter } from "./routers/studyGroup";
+import { groupRouter } from "./routers/group";
 import { userRouter } from "./routers/user";
 import { matchRouter } from "./routers/match";
 import { groupWorkRouter } from "./routers/groupWork";
@@ -12,7 +12,7 @@ import { groupWorkRouter } from "./routers/groupWork";
  */
 export const appRouter = createTRPCRouter({
   post: postRouter,
-  studyGroup: studyGroupRouter,
+  group: groupRouter,
   user: userRouter,
   match: matchRouter,
   groupWork: groupWorkRouter,

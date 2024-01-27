@@ -15,7 +15,7 @@ export default function Home() {
 }
 
 async function HomePage() {
-  const data = await api.studyGroup.getAll.query();
+  const data = await api.group.getAll.query();
 
   return (
     <main className="flex h-screen justify-center">

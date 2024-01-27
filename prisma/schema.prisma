@@ -62,7 +62,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
-  studyGroups   UserStudyGroup[]
+  groups   UserGroup[]
   matches       UserMatch[]
 }
 
@@ -74,34 +74,34 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model StudyGroup {
+model Group {
   id          String           @id @default(cuid())
   name        String
   description String?
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
   works       GroupWork[]
-  users       UserStudyGroup[]
+  users       UserGroup[]
 }
 
-model UserStudyGroup {
+model UserGroup {
   userId       String
   user         User       @relation(fields: [userId], references: [id])
-  studyGroupId String
-  studyGroup   StudyGroup @relation(fields: [studyGroupId], references: [id])
+  groupId String
+  group   Group @relation(fields: [groupId], references: [id])
 
-  @@id([userId, studyGroupId])
+  @@id([userId, groupId])
 }
 
 model GroupWork {
   id           String     @id @default(cuid())
-  studyGroupId String
+  groupId String
   name         String
   description  String?
   matches       Match[]
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
-  studyGroup   StudyGroup @relation(fields: [studyGroupId], references: [id])
+  group   Group @relation(fields: [groupId], references: [id])
 }
 
 model Match {
