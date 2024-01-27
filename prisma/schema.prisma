@@ -54,15 +54,15 @@ model Session {
 }
 
 model User {
-  id            String           @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?          @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
-  groups   UserGroup[]
+  groups        UserGroup[]
   matches       UserMatch[]
 }
 
@@ -75,32 +75,32 @@ model VerificationToken {
 }
 
 model Group {
-  id          String           @id @default(cuid())
+  id          String      @id @default(cuid())
   name        String
   description String?
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
   works       GroupWork[]
   users       UserGroup[]
 }
 
 model UserGroup {
-  userId       String
-  user         User       @relation(fields: [userId], references: [id])
+  userId  String
+  user    User   @relation(fields: [userId], references: [id])
   groupId String
-  group   Group @relation(fields: [groupId], references: [id])
+  group   Group  @relation(fields: [groupId], references: [id])
 
   @@id([userId, groupId])
 }
 
 model GroupWork {
-  id           Int        @id @default(autoincrement())
-  groupId String
-  description  String?
-  matches       Match[]
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  group   Group @relation(fields: [groupId], references: [id])
+  id          Int      @id @default(autoincrement())
+  groupId     String
+  description String?
+  matches     Match[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  group       Group    @relation(fields: [groupId], references: [id])
 }
 
 model Match {
@@ -113,8 +113,8 @@ model Match {
 }
 
 model UserMatch {
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
   match   Match  @relation(fields: [matchId], references: [id])
   matchId String
 
