@@ -98,7 +98,7 @@ model GroupWork {
   studyGroupId String
   name         String
   description  String?
-  mathes       Match[]
+  matches       Match[]
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   studyGroup   StudyGroup @relation(fields: [studyGroupId], references: [id])
