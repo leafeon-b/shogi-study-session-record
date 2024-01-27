@@ -94,9 +94,8 @@ model UserGroup {
 }
 
 model GroupWork {
-  id           String     @id @default(cuid())
+  id           Int        @id @default(autoincrement())
   groupId String
-  name         String
   description  String?
   matches       Match[]
   createdAt    DateTime   @default(now())
@@ -106,7 +105,7 @@ model GroupWork {
 
 model Match {
   id          String      @id @default(cuid())
-  groupWorkId String
+  groupWorkId Int
   groupWork   GroupWork   @relation(fields: [groupWorkId], references: [id])
   users       UserMatch[]
   createdAt   DateTime    @default(now())
