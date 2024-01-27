@@ -62,6 +62,14 @@ const Navigation = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
+            <ListItemButton LinkComponent="a" href="/group-works">
+              <ListItemText
+                className="flex justify-center"
+                primary="開催一覧"
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
             <ListItemButton LinkComponent="a" href="/matches">
               <ListItemText
                 className="flex justify-center"
