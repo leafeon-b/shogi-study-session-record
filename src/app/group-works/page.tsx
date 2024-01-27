@@ -23,14 +23,20 @@ async function HomePage() {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>研究会名</TableCell>
+              <TableCell>回次</TableCell>
               <TableCell>説明</TableCell>
               <TableCell>作成日</TableCell>
               <TableCell>最終更新日</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
+            {data.map(async (item) => (
               <TableRow key={item.id}>
+                <TableCell>
+                  {(await api.group.getById.query({ id: item.groupId }))?.name}
+                </TableCell>
+                <TableCell>{item.id}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.createdAt.toLocaleDateString()}</TableCell>
                 <TableCell>{item.updatedAt.toLocaleDateString()}</TableCell>
