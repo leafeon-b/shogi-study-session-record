@@ -24,7 +24,6 @@ async function HomePage() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>名前</TableCell>
               <TableCell>説明</TableCell>
               <TableCell>作成日</TableCell>
               <TableCell>最終更新日</TableCell>
@@ -33,7 +32,6 @@ async function HomePage() {
           <TableBody>
             {data.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.name}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.createdAt.toLocaleDateString()}</TableCell>
                 <TableCell>{item.updatedAt.toLocaleDateString()}</TableCell>
