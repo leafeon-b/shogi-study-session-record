@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { api } from "~/trpc/server";
 
 export default async function Users() {
@@ -39,7 +40,9 @@ export default async function Users() {
                     />
                   </div>
                 </TableCell>
-                <TableCell>{item.name}</TableCell>
+                <TableCell>
+                  <Link href={`/user/${item.id}`}>{item.name}</Link>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
