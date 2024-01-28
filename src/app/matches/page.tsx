@@ -11,6 +11,15 @@ import { api } from "~/trpc/server";
 export default async function Matches() {
   const matches = await api.match.getAll.query();
 
+  const matchesWithUsers = await Promise.all(
+    matches.map(async (match) => {
+      const users = await api.userMatch.getUsersByMatchId.query({
+        id: match.id,
+      });
+      return { ...match, users };
+    }),
+  );
+
   return (
     <main className="flex h-screen justify-center">
       <div className="h-full w-full border-x md:max-w-2xl">
@@ -26,11 +35,11 @@ export default async function Matches() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {matches.map((item) => (
+            {matchesWithUsers.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>研究会の名前が入るよ</TableCell>
-                <TableCell>対局者1の名前が入るよ</TableCell>
-                <TableCell>対局者2の名前が入るよ</TableCell>
+                <TableCell>{item.users[0]?.name}</TableCell>
+                <TableCell>{item.users[1]?.name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
