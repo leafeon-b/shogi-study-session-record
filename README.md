@@ -14,3 +14,17 @@
 ```bash
 npm run dev
 ```
+
+# 使用している技術・ライブラリ・フレームワーク
+
+typescript
+react
+nextjs
+prisma
+trpc
+nextauth
+tailwindcss
+husky
+prettier
+eslint
+zod
