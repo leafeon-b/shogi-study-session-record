@@ -13,11 +13,11 @@ import {
 import Link from "next/link";
 import { getServerAuthSession } from "~/server/auth";
 
-const session = await getServerAuthSession();
 const drawerWidth = 240;
 
 // ナビゲーション
-const Navigation = () => {
+const Navigation = async () => {
+  const session = await getServerAuthSession();
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
