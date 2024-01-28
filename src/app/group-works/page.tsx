@@ -5,17 +5,18 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { unstable_noStore as noStore } from "next/cache";
 import { api } from "~/trpc/server";
 
-export default function Home() {
-  noStore();
+export default async function GroupWorks() {
+  const groupWorks = await api.groupWork.getAll.query();
 
-  return <HomePage />;
-}
-
-async function HomePage() {
-  const data = await api.groupWork.getAll.query();
+  // 各groupWorkについて、関連するgroupの情報を取得
+  const groupWorksWithGroupName = await Promise.all(
+    groupWorks.map(async (groupWork) => {
+      const group = await api.group.getById.query({ id: groupWork.groupId });
+      return { ...groupWork, groupName: group?.name ?? "Unknown" };
+    }),
+  );
 
   return (
     <main className="flex h-screen justify-center">
@@ -31,11 +32,9 @@ async function HomePage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map(async (item) => (
+            {groupWorksWithGroupName.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>
-                  {(await api.group.getById.query({ id: item.groupId }))?.name}
-                </TableCell>
+                <TableCell>{item.groupName}</TableCell>
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.createdAt.toLocaleDateString()}</TableCell>
