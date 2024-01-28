@@ -4,6 +4,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import Image from "next/image";
 import { api } from "~/trpc/server";
@@ -14,6 +15,9 @@ export default async function Users() {
   return (
     <main className="flex h-screen justify-center">
       <div className="h-full w-full border-x md:max-w-2xl">
+        <Typography variant="h4" component="h1" gutterBottom>
+          ユーザ一覧
+        </Typography>
         <Table>
           <TableHead>
             <TableRow>
