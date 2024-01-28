@@ -5,16 +5,9 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { unstable_noStore as noStore } from "next/cache";
 import { api } from "~/trpc/server";
 
-export default function Home() {
-  noStore();
-
-  return <HomePage />;
-}
-
-async function HomePage() {
+export default async function Groups() {
   const data = await api.group.getAll.query();
 
   return (
