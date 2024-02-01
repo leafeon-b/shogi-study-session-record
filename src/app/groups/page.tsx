@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { api } from "~/trpc/server";
+import AddIconButton from "./_AddIconButton";
 
 export default async function Groups() {
   const data = await api.group.getAll.query();
@@ -17,6 +18,7 @@ export default async function Groups() {
         <Typography variant="h4" component="h1" gutterBottom>
           研究会一覧
         </Typography>
+        <AddIconButton />
         <Table>
           <TableHead>
             <TableRow>
