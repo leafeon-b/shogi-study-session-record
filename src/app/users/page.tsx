@@ -41,7 +41,15 @@ export default async function Users() {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <Link href={`/user/${item.id}`}>{item.name}</Link>
+                  <Link
+                    href={`/user/${item.id}`}
+                    style={{
+                      textDecoration: "underline",
+                      color: "blue",
+                    }}
+                  >
+                    {item.name}
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}
